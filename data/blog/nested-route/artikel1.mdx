@@ -1,0 +1,62 @@
+---
+title: Pengenalan ke TypeScript
+date: '2023-08-19'
+tags: ['Indonesia','typescript','code']
+draft: false
+summary: Mengapa Menggunakan TypeScript?
+---
+
+TypeScript adalah bahasa pemrograman yang bersifat open-source dan dikembangkan oleh Microsoft. Bahasa ini merupakan pengembangan dari JavaScript yang ditambahkan dengan fitur-fitur tipe statis, sehingga memungkinkan pengembang untuk menulis kode yang lebih aman, terstruktur, dan mudah untuk dikelola. TypeScript kemungkinan besar cocok bagi mereka yang sudah familiar dengan JavaScript dan ingin meningkatkan kualitas serta keamanan kode mereka.
+
+## Mengapa Menggunakan TypeScript?
+
+Salah satu alasan utama mengapa pengembang memilih TypeScript adalah kemampuannya untuk memvalidasi tipe data pada saat kompilasi. Ini membantu mencegah kesalahan yang umum terjadi dalam JavaScript, seperti menggabungkan tipe data yang tidak cocok atau mengakses properti yang tidak ada pada objek. Dengan adanya pengecekan tipe ini, banyak kesalahan dapat terdeteksi lebih awal dalam siklus pengembangan.
+
+Selain itu, TypeScript menyediakan dukungan penuh untuk fitur-fitur terbaru dari ECMAScript (standar JavaScript), sehingga Anda dapat menggunakan sintaks dan konsep terbaru dalam kode Anda tanpa harus khawatir tentang dukungan browser.
+
+## Contoh Penggunaan TypeScript
+
+Mari kita lihat contoh sederhana penggunaan TypeScript dengan membuat program yang menghitung luas lingkaran. Berikut adalah langkah-langkahnya:
+
+## 1. Instalasi TypeScript
+Pertama, pastikan Anda memiliki Node.js terinstal di komputer Anda. Kemudian, Anda dapat menginstal TypeScript secara global dengan menjalankan perintah berikut melalui terminal:
+```bash
+npm install -g typescript
+```
+## 2. Buat Berkas TypeScript
+Buat berkas baru dengan ekstensi .ts, misalnya lingkaran.ts.
+
+## 3. Tulis Kode TypeScript
+Buka berkas lingkaran.ts dan tulis kode berikut:
+```bash
+// lingkaran.ts
+
+// Mendefinisikan tipe data untuk lingkaran
+interface Lingkaran {
+    jariJari: number;
+}
+
+// Fungsi untuk menghitung luas lingkaran
+function hitungLuasLingkaran(lingkaran: Lingkaran): number {
+    return Math.PI * lingkaran.jariJari ** 2;
+}
+
+// Contoh penggunaan
+const lingkaranContoh: Lingkaran = { jariJari: 5 };
+const luas = hitungLuasLingkaran(lingkaranContoh);
+console.log(`Luas lingkaran: ${luas}`);
+```
+## 4. Kompilasi dan Eksekusi
+Setelah menulis kode TypeScript, kompilasilah ke dalam JavaScript dengan menjalankan perintah:
+```bash
+tsc lingkaran.ts
+```
+Ini akan menghasilkan berkas lingkaran.js. Selanjutnya, jalankan berkas JavaScript tersebut:
+```bash
+node lingkaran.js
+```
+Dalam contoh ini, TypeScript membantu kita mendefinisikan tipe data Lingkaran dan memastikan bahwa properti yang diperlukan tersedia. Jika Anda mencoba mengakses properti yang tidak ada, TypeScript akan memberikan pesan error pada saat kompilasi.
+
+## Kesimpulan
+
+TypeScript adalah alat yang kuat untuk meningkatkan keamanan, terstruktur, dan kualitas kode JavaScript Anda. Dengan dukungan tipe statis, Anda dapat menghindari banyak kesalahan umum dan mendapatkan manfaat dari fitur-fitur terbaru dari bahasa JavaScript. Dalam pengembangan yang lebih kompleks, TypeScript dapat membantu dalam mengelola proyek dengan lebih efisien.

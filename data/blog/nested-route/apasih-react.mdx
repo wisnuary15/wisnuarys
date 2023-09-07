@@ -1,0 +1,64 @@
+---
+title: Mengenal React.js
+date: '2023-08-20'
+tags: ['Indonesia','javascript','code']
+draft: false
+summary: Konsep Dasar dalam React.js
+---
+
+
+Framework React.js telah menjadi salah satu pilar utama dalam pengembangan aplikasi web modern. Dikenal karena kemampuannya dalam membangun antarmuka pengguna yang interaktif dan efisien, React.js telah mendominasi dunia pengembangan front-end. Dalam artikel ini, kita akan menjelajahi konsep dasar React.js dan memberikan contoh penggunaannya.
+
+## Apa Itu React.js?
+React.js adalah sebuah library JavaScript yang digunakan untuk membangun antarmuka pengguna (UI) yang interaktif. Dikembangkan oleh tim di Facebook, React.js mengadopsi konsep komponen, di mana UI dipecah menjadi bagian-bagian kecil yang disebut komponen. Setiap komponen dapat berinteraksi dengan komponen lainnya, dan ketika data berubah, hanya komponen yang terpengaruh yang diperbarui, bukan seluruh halaman.
+
+## Konsep Dasar dalam React.js
+Komponen: Sebagai dasar dari React.js, komponen adalah unit dasar yang membangun antarmuka pengguna. Mereka bisa bersifat fungsional atau berbasis kelas.
+
+State: State adalah data yang dikelola oleh komponen dan dapat berubah seiring waktu. Perubahan state akan memicu pembaruan tampilan yang sesuai.
+
+Props: Props adalah properti yang diteruskan dari komponen induk ke komponen anak. Mereka digunakan untuk mengirim data dari satu komponen ke komponen lain.
+
+Perubahan Dinamis: React.js mengadopsi pendekatan "virtual DOM" yang memungkinkan perubahan pada tampilan diwakili dalam struktur data virtual sebelum diterapkan ke DOM aktual. Ini membuat pembaruan tampilan lebih efisien.
+
+Contoh Penggunaan React.js
+Berikut adalah contoh sederhana penggunaan React.js dalam membangun komponen UI untuk daftar tugas:
+
+```javascript
+
+// Komponen utama
+function App() {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState('');
+
+  const addTask = () => {
+    if (newTask.trim() !== '') {
+      setTasks([...tasks, newTask]);
+      setNewTask('');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Daftar Tugas</h1>
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ul>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+      />
+      <button onClick={addTask}>Tambah Tugas</button>
+    </div>
+  );
+}
+
+export default App;
+```
+Dalam contoh ini, kami menggunakan useState untuk mengelola state komponen, yang mencakup daftar tugas dan tugas baru yang akan ditambahkan. Ketika tombol "Tambah Tugas" ditekan, tugas baru ditambahkan ke daftar tugas.
+
+## Kesimpulan
+React.js adalah framework yang kuat untuk membangun antarmuka pengguna interaktif dalam aplikasi web. Dengan konsep dasar seperti komponen, state, dan props, React.js memudahkan pengembang dalam mengelola kompleksitas UI. Dalam contoh penggunaan di atas, kita dapat melihat bagaimana React.js memungkinkan kita untuk membuat daftar tugas yang dinamis dengan sedikit usaha. Dengan terus mempelajari dan mendalami React.js, Anda dapat menciptakan pengalaman pengguna yang luar biasa dalam aplikasi web Anda.

@@ -1,0 +1,98 @@
+---
+title: 'Membuat Web Application Cuaca'
+date: '2023-01-12'
+tags: ['next-js', 'tailwind', 'guide','typescript','JavaScript']
+draft: false
+summary: 'Membuat Web App Cuaca.'
+---
+
+## Pendahuluan
+
+Dalam dunia pengembangan web, aplikasi cuaca menjadi salah satu proyek yang menarik. Dalam artikel ini, kita akan membahas bagaimana membuat aplikasi cuaca sederhana menggunakan Next.js, sebuah framework React yang kuat.
+
+
+## Langkah 1: Persiapan Awal
+
+Pastikan Node.js sudah terinstal di komputer Anda. Anda juga bisa menggunakan npm atau yarn. Buat direktori baru untuk proyek dan inisialisasi proyek dengan perintah berikut:
+
+
+```bash
+npx create-next-app weather-app
+```
+## Langkah 2: Mengambil Data Cuaca
+Dalam aplikasi cuaca, kita perlu data cuaca dari layanan API. Dalam contoh ini, kita akan menggunakan OpenWeatherMap API. Daftarlah di situs mereka dan dapatkan API key.
+
+## Langkah 3: Membuat Komponen Weather
+Buatlah komponen React untuk menampilkan informasi cuaca. Buat file Weather.js dalam direktori components:
+
+```bash
+import React from 'react';
+
+const Weather = ({ weatherData }) => {
+  return (
+    <div>
+      <h2>Info Cuaca</h2>
+      <p>Kota: {weatherData.name}</p>
+      <p>Temperatur: {weatherData.main.temp}°C</p>
+      <p>Cuaca: {weatherData.weather[0].main}</p>
+    </div>
+  );
+}
+
+export default Weather;
+```
+## Langkah 4: Menggunakan API Key
+Simpan API key dari OpenWeatherMap dalam file .env.local di root proyek:
+```bash
+API_KEY=your_api_key_here
+Langkah 5: Mengambil Data dari API
+```
+Buat file index.js dalam direktori pages sebagai halaman utama:
+```bash
+import React, { useState } from 'react';
+import Weather from '../components/Weather';
+
+const HomePage = () => {
+  const [weatherData, setWeatherData] = useState(null);
+
+  const fetchWeatherData = async () => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=Jakarta&units=metric&appid=${process.env.API_KEY}`
+      );
+      const data = await response.json();
+      setWeatherData(data);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Aplikasi Cuaca</h1>
+      <button onClick={fetchWeatherData}>Tampilkan Cuaca</button>
+      {weatherData && <Weather weatherData={weatherData} />}
+    </div>
+  );
+}
+
+export default HomePage;
+```
+## Langkah 6: Menjalankan Aplikasi
+Jalankan proyek dengan perintah:
+
+```bash
+npm run dev
+```
+Buka browser dan akses http://localhost:3000 untuk melihat aplikasi cuaca sederhana yang telah dibuat.
+
+## Kesimpulan
+Dengan menggunakan Next.js, kita dapat dengan mudah membuat aplikasi cuaca sederhana yang mengambil data dari API dan menampilkan informasi cuaca kepada pengguna. Dalam tutorial ini, kita melangkah melalui proses langkah demi langkah untuk menciptakan aplikasi cuaca ini. Selamat mencoba!
+
+Referensi
+Dokumentasi Next.js
+Dokumentasi OpenWeatherMap API
+vbnet
+Copy code
+
+Pastikan Anda telah menambahkan informasi penting, seperti API key OpenWeatherMap yang Anda dapatkan, sesuai dengan langkah-langkah yang ada dalam artikel.

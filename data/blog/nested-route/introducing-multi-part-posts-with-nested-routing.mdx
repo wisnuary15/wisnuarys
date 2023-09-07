@@ -1,0 +1,96 @@
+---
+title: 'Konsep Dasar Deep Learning dengan Python'
+date: '2023-8-12'
+tags: ['Indonesia', 'Python', 'guide']
+draft: false
+summary: 'Apa itu Deep Learning?'
+---
+
+
+Deep Learning adalah salah satu cabang dari Machine Learning yang telah mencapai prestasi luar biasa dalam berbagai aplikasi seperti pengenalan gambar, pemrosesan bahasa alami, dan permainan. Dalam artikel ini, kita akan menjelaskan konsep dasar Deep Learning menggunakan Python dan memberikan beberapa contoh kode untuk memahami konsep tersebut.
+
+
+Pengantar ke Konsep Dasar Deep Learning dengan Python
+Deep Learning adalah salah satu cabang dari Machine Learning yang telah mencapai prestasi luar biasa dalam berbagai aplikasi seperti pengenalan gambar, pemrosesan bahasa alami, dan permainan. Dalam artikel ini, kita akan menjelaskan konsep dasar Deep Learning menggunakan Python dan memberikan beberapa contoh kode untuk memahami konsep tersebut.
+
+## Neuron Artificial dan Jaringan Saraf Tiruan (Artificial Neural Networks/ANN)
+
+Pada dasarnya, Deep Learning terinspirasi dari struktur dan fungsi otak manusia. Neuron dalam otak manusia memiliki kemampuan untuk menerima sinyal, memproses informasi, dan mengirimkan sinyal keluar. Dalam Deep Learning, kita menggunakan Neuron Artificial, yang digunakan untuk memodelkan jaringan saraf tiruan.
+
+Contoh kode untuk membuat Neuron Artificial sederhana:
+```js
+class Neuron:
+    def __init__(self, input_size):
+        self.weights = [0.0] * input_size
+        self.bias = 0.0
+
+    def activate(self, inputs):
+        total = sum(w * x for w, x in zip(self.weights, inputs)) + self.bias
+        return 1.0 if total >= 0.0 else 0.0
+```
+## Perceptron
+
+Perceptron adalah bentuk sederhana dari jaringan saraf tiruan yang dapat melakukan klasifikasi biner. Ini terdiri dari satu lapisan neuron input dan lapisan neuron output.
+
+Contoh kode untuk perceptron:
+```js
+class Perceptron:
+    def __init__(self, input_size):
+        self.neuron = Neuron(input_size)
+
+    def predict(self, inputs):
+        return self.neuron.activate(inputs)
+```
+
+## Multilayer Perceptron (MLP)
+
+MLP adalah jaringan saraf tiruan dengan lebih dari satu lapisan tersembunyi. Ini memungkinkan model untuk mempelajari fitur yang lebih kompleks.
+
+Contoh kode untuk MLP:
+```js
+class MLP:
+    def __init__(self, input_size, hidden_sizes, output_size):
+        self.hidden_layers = []
+        for size in hidden_sizes:
+            self.hidden_layers.append([Neuron(size) for _ in range(size)])
+        self.output_layer = [Neuron(output_size) for _ in range(output_size)]
+
+    def predict(self, inputs):
+        hidden_outputs = [neuron.activate(inputs) for neuron in self.hidden_layers[0]]
+        output_inputs = [output.activate(hidden_outputs) for output in self.output_layer]
+        return output_inputs
+```
+## Pelatihan Model Deep Learning
+
+Model Deep Learning perlu diatur agar sesuai dengan data yang ingin diprediksi. Ini melibatkan pelatihan model dengan data pelatihan untuk mengubah bobot dan bias neuron.
+
+Contoh kode pelatihan model MLP:
+```js
+def train_mlp(model, training_data, epochs, learning_rate):
+    for _ in range(epochs):
+        for inputs, targets in training_data:
+            hidden_outputs = [neuron.activate(inputs) for neuron in model.hidden_layers[0]]
+            output_inputs = [output.activate(hidden_outputs) for output in model.output_layer]
+
+            # Hitung error dan perbarui bobot dan bias
+            # ... (langkah-langkah pelatihan)
+```
+
+# Contoh data pelatihan
+```js
+ training_data = [([0, 0], [0]), ([0, 1], [1]), ([1, 0], [1]), ([1, 1], [0])]
+
+```
+
+# Inisialisasi model MLP
+```js
+mlp_model = MLP(input_size=2, hidden_sizes=[2], output_size=1)
+```
+
+# Latih model
+```js 
+train_mlp(mlp_model, training_data, epochs=1000, learning_rate=0.1)
+ ```
+
+## Kesimpulan
+Artikel ini memberikan gambaran konsep dasar Deep Learning menggunakan Python. Dari Neuron Artificial hingga Multilayer Perceptron, kita memahami komponen dasar yang membentuk model Deep Learning. Dengan memahami konsep ini, Anda dapat melangkah lebih jauh untuk membangun dan mengoptimalkan model yang lebih kompleks untuk berbagai tugas.

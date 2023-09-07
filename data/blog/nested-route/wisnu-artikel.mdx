@@ -1,0 +1,67 @@
+---
+title: Asynchronous JavaScript dengan Promises dan Async/Await
+date: '2023-09-3'
+tags: ['Indonesia','javascript','code']
+draft: false
+summary: Konsep Dasar dalam React.js
+---
+
+Pada dunia web modern, pengguna mengharapkan pengalaman yang responsif. Itu berarti aplikasi web Anda harus dapat menjalankan tugas-tugas berkepanjangan, seperti mengambil data dari server, tanpa menghalangi antarmuka pengguna. Inilah saatnya konsep asinkron dalam JavaScript berperan. Dalam artikel ini, kita akan menjelaskan konsep asinkron, bagaimana kita dapat mengatasinya dengan menggunakan Promises, dan kemudian bagaimana Async/Await mempermudah lagi penanganan asinkron.
+
+## Apa Itu Asynchronous JavaScript?
+
+JavaScript adalah bahasa pemrograman yang dijalankan oleh peramban web dan berfungsi dengan cara asinkron. Artinya, ketika JavaScript mengeksekusi sesuatu yang membutuhkan waktu, seperti mengambil data dari server, ia tidak akan menunggu hasilnya. Sebaliknya, ia akan melanjutkan menjalankan kode lainnya. Ini memungkinkan antarmuka pengguna tetap responsif.
+
+## Promises: Mengelola Asynchronous dengan Lebih Baik
+
+Promises adalah cara modern untuk mengatasi asinkron di JavaScript. Mereka adalah objek yang mewakili nilai yang mungkin belum tersedia saat Promise dibuat. Di sini adalah contoh penggunaan Promise:
+
+```javascript
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Data berhasil diambil!');
+    }, 2000);
+  });
+};
+
+fetchData()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
+## Dalam contoh ini, fetchData mengembalikan Promise yang akan selesai setelah 2 detik. Ketika selesai, then akan dijalankan.
+
+Async/Await: Membuat Kode Asynchronous Terlihat Synchronus
+Async/Await adalah fitur JavaScript yang diperkenalkan dalam ES2017, yang mempermudah penanganan kode asinkron. Dengan Async/Await, Anda dapat menulis kode asinkron yang terlihat seperti kode sekuensial:
+```javascript
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Data berhasil diambil!');
+    }, 2000);
+  });
+};
+
+const getData = async () => {
+  try {
+    const result = await fetchData();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+getData();
+```
+Async/Await membuat kode terlihat jelas dan mudah dibaca, mirip dengan kode sekuensial.
+
+## Menggunakan AJAX dengan Promises
+Salah satu aplikasi umum dari asinkron adalah pengambilan data dari server tanpa perlu me-refresh halaman. Ini bisa dicapai dengan menggunakan AJAX (Asynchronous JavaScript and XML) bersama dengan Promises atau Async/Await. Anda dapat menjelaskan cara menggunakan fetch API untuk mengambil data dari server dengan Promises atau Async/Await.
+
+## Kesimpulan
+Asynchronous JavaScript adalah kunci untuk membuat aplikasi web yang responsif. Promises dan Async/Await adalah alat yang kuat untuk mengelola asinkron di JavaScript. Dengan pemahaman yang baik tentang konsep ini, Anda dapat membuat aplikasi web yang lebih baik dan lebih efisien.

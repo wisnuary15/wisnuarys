@@ -1,0 +1,62 @@
+---
+title: Perbedaan Antara JavaScript dan TypeScript
+date: '2023-08-24'
+tags: ['Indonesia','javascript','code']
+draft: false
+summary: Perbedaan Antara JavaScript dan TypeScript: Kapan Harus Memilih Salah Satunya?
+---
+
+
+**Perbedaan Antara JavaScript dan TypeScript: Kapan Harus Memilih Salah Satunya?**
+
+JavaScript dan TypeScript adalah dua bahasa pemrograman yang sering digunakan dalam pengembangan web. Meskipun keduanya memiliki hubungan yang erat, ada perbedaan mendasar antara keduanya. Artikel ini akan membahas perbedaan utama antara JavaScript dan TypeScript, serta memberikan contoh program untuk mengilustrasikan perbedaan tersebut.
+
+## Apa itu JavaScript?
+
+JavaScript adalah bahasa pemrograman yang sangat populer untuk pengembangan web. Ia digunakan untuk membuat interaksi di antarmuka pengguna, mengelola logika aplikasi di sisi klien, dan bahkan mengakses sumber daya di jaringan. JavaScript adalah bahasa yang dijalankan di browser klien dan dapat diintegrasikan dalam elemen HTML.
+
+### Contoh Program JavaScript:
+
+```javascript
+// Program JavaScript sederhana untuk menyapa pengguna
+const nama = prompt("Masukkan nama Anda:");
+console.log(\`Halo, \${nama}! Selamat datang di situs kami.\`);
+```
+
+## Apa itu TypeScript?
+
+TypeScript, di sisi lain, adalah superset dari JavaScript. Itu berarti semua kode JavaScript sah adalah kode TypeScript, tetapi TypeScript juga menambahkan fitur-fitur tambahan, terutama tipe statis. TypeScript membantu mencegah kesalahan yang umum dalam pengembangan JavaScript dengan memungkinkan Anda mendefinisikan tipe data untuk variabel, parameter fungsi, dan properti objek.
+
+### Contoh Program TypeScript:
+
+```typescript
+// Program TypeScript sederhana untuk menyapa pengguna
+function sapa(nama: string): void {
+    console.log(\`Halo, \${nama}! Selamat datang di situs kami.\`);
+}
+
+const namaPengguna = prompt("Masukkan nama Anda:");
+sapa(namaPengguna);
+```
+
+## Perbedaan Utama Antara JavaScript dan TypeScript:
+
+1. **Tipe Statis vs. Tipe Dinamis:**
+   - JavaScript: Tipe variabel dapat berubah secara dinamis saat runtime. Tidak ada pemeriksaan tipe pada saat kompilasi.
+   - TypeScript: Tipe variabel ditentukan pada saat kompilasi dan diverifikasi secara ketat.
+
+2. **Pengecekan Kesalahan:**
+   - JavaScript: Kesalahan tipe mungkin hanya muncul saat program dijalankan, sulit untuk mendeteksi kesalahan sebelumnya.
+   - TypeScript: Kesalahan tipe terdeteksi pada saat kompilasi, membantu mencegah kesalahan di awal pengembangan.
+
+3. **Pengembangan Tim:**
+   - JavaScript: Pada proyek besar, sulit untuk memastikan semua anggota tim mengikuti konvensi dan tipe yang sama.
+   - TypeScript: Dukungan tipe membantu dalam pengembangan tim dengan memastikan kode konsisten dan lebih mudah dipahami.
+
+4. **Dokumentasi Otomatis:**
+   - JavaScript: Tidak ada dokumentasi tipe otomatis, pengembang perlu mengelola dokumentasi secara manual.
+   - TypeScript: Dokumentasi tipe dihasilkan secara otomatis, membantu dalam pemahaman kode dan penggunaan yang benar.
+
+## Kesimpulan
+
+Pemilihan antara JavaScript dan TypeScript tergantung pada kebutuhan proyek dan preferensi tim pengembangan. JavaScript lebih fleksibel dan cocok untuk proyek kecil atau prototipe, sementara TypeScript cocok untuk proyek yang lebih besar dan kompleks yang memerlukan keamanan dan struktur tipe tambahan. Memahami perbedaan ini membantu Anda membuat keputusan yang tepat dalam memilih bahasa yang sesuai untuk proyek Anda.
