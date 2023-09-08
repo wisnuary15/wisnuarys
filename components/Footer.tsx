@@ -7,19 +7,17 @@ import { AiFillProject } from 'react-icons/ai'
 import { RiOpenSourceLine } from 'react-icons/ri'
 import Link from 'next/link'
 
-export default function Footer({ }) {
+export default function Footer() {
   return (
     <footer className="py-16">
       <div className="container mx-auto flex flex-col items-center">
-        <div className="container mx-auto flex flex-col items-center">
-          <div className="mb-8 flex space-x-4 items-center ml-auto">
-            <div className="flex space-x-4">
-              <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-              <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-              <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-              <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-              <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-            </div>
+        <div className="mb-8 flex space-x-4 items-center ml-auto">
+          <div className="flex space-x-4">
+            <SocialIcon kind="github" href={siteMetadata.github} size={6} />
+            <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
+            <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
+            <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
+            <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full mb-2">
@@ -28,33 +26,33 @@ export default function Footer({ }) {
             <h3 className="text-lg font-semibold mb-4">Overview</h3>
             <ul>
               <li>
-                <a href="/" className="hover:text-blue-400">
+                <Link href="/" className="hover:text-blue-400">
                   Home
-                </a>
+                </Link>
               </li>
               <br />
               <li>
-                <a href="/blog" className="hover:text-blue-400">
+                <Link href="/blog" className="hover:text-blue-400">
                   Blog
-                </a>
+                </Link>
               </li>
               <br />
               <li>
-                <a href="/tags" className="hover:text-blue-400">
+                <Link href="/tags" className="hover:text-blue-400">
                   Tags
-                </a>
+                </Link>
               </li>
               <br />
               <li>
-                <a href="/projects" className="hover:text-blue-400">
+                <Link href="/projects" className="hover:text-blue-400">
                   Project
-                </a>
+                </Link>
               </li>
               <br />
               <li>
-                <a href="/about" className="hover:text-blue-400">
+                <Link href="/about" className="hover:text-blue-400">
                   About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -100,36 +98,36 @@ export default function Footer({ }) {
             <h3 className="text-lg font-semibold mb-4">Help</h3>
             <ul>
               <li>
-                <a
+                <Link
                   href="/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 flex items-center space-x-2"
                 >
                   FAQs
-                </a>
+                </Link>
               </li>
               <br />
               <li>
-                <a
+                <Link
                   href="sms:+6282245754509"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 flex items-center space-x-2"
                 >
                   Privacy policy
-                </a>
+                </Link>
               </li>
               <br />
               <li>
-                <a
+                <Link
                   href="sms:+6282245754509"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 flex items-center space-x-2"
                 >
                   How it works
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -155,7 +153,7 @@ export default function Footer({ }) {
                   className="hover:text-blue-400 flex items-center space-x-2"
                 >
                   <FaEnvelope className="w-6 h-6 mr-4" />
-                  ary@gmail.com
+                  {siteMetadata.email}
                 </a>
               </li>
               <br />
