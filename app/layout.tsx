@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // Ganti ini dengan cara Anda mendapatkan tema
-  const theme = siteMetadata.theme;
+  const theme = siteMetadata.theme
 
   return (
     <html
