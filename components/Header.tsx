@@ -10,11 +10,11 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  const [headerVisible, setHeaderVisible] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false)
 
   useEffect(() => {
-    setHeaderVisible(true);
-  }, []);
+    setHeaderVisible(true)
+  }, [])
 
   return (
     <header className={`flex items-center justify-between py-10 ${headerVisible ? 'fade-in' : ''}`}>
@@ -51,7 +51,7 @@ const Header = () => {
         <MobileNav />
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
