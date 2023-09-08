@@ -1,192 +1,97 @@
-import siteMetadata from '@/data/siteMetadata'
-import SocialIcon from '@/components/social-icons'
-import { FaHome, FaEnvelope } from 'react-icons/fa'
-import { IoMdCall } from 'react-icons/io'
-import { MdForum } from 'react-icons/md'
-import { AiFillProject } from 'react-icons/ai'
-import { RiOpenSourceLine } from 'react-icons/ri'
-import Link from 'next/link'
+import 'css/tailwind.css'
+import 'pliny/search/algolia.css'
 
-export default function Footer({ theme }) {
+import { Space_Grotesk } from 'next/font/google'
+import { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import { SearchProvider, SearchConfig } from 'pliny/search'
+import Header from '@/components/Header'
+import SectionContainer from '@/components/SectionContainer'
+import Footer from '@/components/Footer'
+import siteMetadata from '@/data/siteMetadata'
+import { ThemeProviders } from './theme-providers'
+import { Metadata } from 'next'
+
+const space_grotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteMetadata.siteUrl),
+  title: {
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.title}`,
+  },
+  description: siteMetadata.description,
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: './',
+    siteName: siteMetadata.title,
+    images: [siteMetadata.socialBanner],
+    locale: 'en_US',
+    type: 'website',
+  },
+  alternates: {
+    canonical: './',
+    types: {
+      'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    title: siteMetadata.title,
+    card: 'summary_large_image',
+    images: [siteMetadata.socialBanner],
+  },
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Ganti ini dengan cara Anda mendapatkan tema
+  const theme = siteMetadata.theme;
+
   return (
-    <footer className="py-16">
-      <div className="container mx-auto flex flex-col items-center">
-        <div className="container mx-auto flex flex-col items-center">
-          <div className="mb-8 flex space-x-4 items-center ml-auto">
-            <div className="flex space-x-4">
-              <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-              <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-              <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-              <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-              <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
+    <html
+      lang={siteMetadata.language}
+      className={`${space_grotesk.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <head>
+        <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="/static/favicons/site.webmanifest" />
+        <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      </head>
+      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+        <ThemeProviders>
+          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+          <SectionContainer>
+            <div className="flex h-screen flex-col justify-between font-sans">
+              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+                <Header />
+                <main className="mb-auto">{children}</main>
+              </SearchProvider>
+              <Footer />
             </div>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full mb-2">
-          {/* Kolom 2 */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Overview</h3>
-            <ul>
-              <li>
-                <a href="/" className="hover:text-blue-400">
-                  Home
-                </a>
-              </li>
-              <br />
-              <li>
-                <a href="/blog" className="hover:text-blue-400">
-                  Blog
-                </a>
-              </li>
-              <br />
-              <li>
-                <a href="/tags" className="hover:text-blue-400">
-                  Tags
-                </a>
-              </li>
-              <br />
-              <li>
-                <a href="/projects" className="hover:text-blue-400">
-                  Project
-                </a>
-              </li>
-              <br />
-              <li>
-                <a href="/about" className="hover:text-blue-400">
-                  About
-                </a>
-              </li>
-            </ul>
-          </div>
-          {/* Kolom 3 */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Developers</h3>
-            <ul>
-              <li>
-                <a
-                  href="/" //jangan lupa isiiii
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  <MdForum className="w-6 h-6 mr-4" /> Forum
-                </a>
-              </li>
-              <br />
-              <li>
-                <a
-                  href="https://github.com/wisnuary15"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  <AiFillProject className="w-6 h-6 mr-4" /> Projects
-                </a>
-              </li>
-              <br />
-              <li>
-                <a
-                  href="https://github.com/wisnuary15"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  <RiOpenSourceLine className="w-6 h-6 mr-4" /> Open Source
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Help</h3>
-            <ul>
-              <li>
-                <a
-                  href="/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  FAQs
-                </a>
-              </li>
-              <br />
-              <li>
-                <a
-                  href="sms:+6282245754509"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  Privacy policy
-                </a>
-              </li>
-              <br />
-              <li>
-                <a
-                  href="sms:+6282245754509"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  How it works
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Get in touch</h3>
-            <ul>
-              <li>
-                <a
-                  href="https://maps.app.goo.gl/xuzRPWorxXgdbvkx9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  <FaHome className="w-6 h-6 mr-4" /> Jombang, Jawa Timur, ID
-                </a>
-              </li>
-              <br />
-              <li>
-                <a
-                  href={`mailto:${siteMetadata.email}?subject=Subject%20Here&body=Write%20your%20message%20here`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  <FaEnvelope className="w-6 h-6 mr-4" />
-                  ary@gmail.com
-                </a>
-              </li>
-              <br />
-              <li>
-                <a
-                  href="sms:+6282245754509"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 flex items-center space-x-2"
-                >
-                  <IoMdCall className="w-6 h-6 mr-4" />
-                  +62 822 457 545 09
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="flex justify-between text-white-400 mt-4 max-sm:flex-col max-sm:items-center">
-          <div>
-            Wisnu Ary Swadana
-            <span>{` • `}</span>
-            &copy; {new Date().getFullYear()}
-          </div>
-          <div>
-            <Link href="/" className="text-blue-400">
-              {' • '} Wisnu Blog
-            </Link>
-          </div>
-        </div>
-        <p className="font-montserrat cursor-pointer">Terms & Conditions</p>
-      </div>
-    </footer>
+          </SectionContainer>
+        </ThemeProviders>
+      </body>
+    </html>
   )
 }
