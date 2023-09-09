@@ -153,7 +153,7 @@ export default function Footer() {
                   className="hover:text-blue-400 flex items-center space-x-2"
                 >
                   <FaEnvelope className="w-6 h-6 mr-4" />
-                  {siteMetadata.email}
+                  ary@gmail.com
                 </a>
               </li>
               <br />
